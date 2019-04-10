@@ -1,15 +1,15 @@
-import { h, Component, render } from 'preact';
-import PageTemplate from '../templates/BasicTemplate/BasicTemplate.tsx';
+import { h, Component } from 'preact';
 
 export interface Props {
   path: string,
+  optionalValue?: string
 }
 
 export interface State {
   useOptional: boolean
 }
 
-export default class Home extends Component<Props, State> {
+export default class Other extends Component<Props, State> {
 
   constructor() {
     super();
@@ -24,12 +24,10 @@ export default class Home extends Component<Props, State> {
     //  .then(({ useOptional }) => this.setState({ useOptional }));
   }
 
-  render({ path }: Props, { useOptional }: State) {
+  render({ path, optionalValue }: Props, { useOptional }: State) {
     return (
-      <div>Hello World! {path}</div>
+      <div>Hello Other World! {path} {useOptional ? optionalValue : null}</div>
     );
   }
 
 }
-
-render(<PageTemplate/>, document.getElementById("app"));

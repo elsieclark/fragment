@@ -10,16 +10,20 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^11.13.2",
+    "compression-webpack-plugin": "^2.0.0",
+    "css-loader": "^1.0.1",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "preact": "^8.4.2",
+    "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
+    "typed-css-modules-loader": "0.0.17",
     "typescript": "^3.4.2",
+    "typings-for-css-modules-loader": "^1.7.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.0"
-  },
-  "dependencies": {
-    "preact-async-route": "^2.2.1",
-    "preact-router": "^2.6.1"
   }
 }
