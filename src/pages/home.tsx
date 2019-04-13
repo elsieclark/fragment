@@ -1,30 +1,31 @@
 import { h, Component, render } from 'preact';
 import PageTemplate from 'Templates/BasicTemplate';
 
-export interface Props {
+interface Props {
     path: string;
 }
 
-export interface State {
+interface State {
     useOptional: boolean;
 }
 
 export default class Home extends Component<Props, State> {
-    constructor() {
-        super();
-        this.state = {
-            useOptional: false,
-        };
-    }
+    state: State = {
+        useOptional: false,
+    };
 
-    componentWillMount() {
+    componentWillMount(): void {
         //fetch('/some/api/')
         //  .then((response: any) => response.json())
         //  .then(({ useOptional }) => this.setState({ useOptional }));
     }
 
-    render({ path }: Props, { useOptional }: State) {
-        return <div>Hello World! {path}</div>;
+    render({ path }: Props, { useOptional }: State): JSX.Element {
+        return (
+            <div>
+                Hello World! {path} {useOptional}
+            </div>
+        );
     }
 }
 

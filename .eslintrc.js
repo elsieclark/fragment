@@ -19,13 +19,16 @@ module.exports = {
         sourceType:  'module',
     },
     'plugins': [
-        'prettier'
+        'prettier',
+        'react',
     ],
     'rules': {
         'indent': [
             'error',
             4
         ],
+        'react/jsx-uses-vars': 1,
+        '@typescript-eslint/no-unused-vars': ["error", { "varsIgnorePattern": '^h$' }],
         'linebreak-style': [
             'error',
             'unix'
@@ -40,5 +43,6 @@ module.exports = {
             'always'
         ],
         'no-console': 1,
+        '@typescript-eslint/explicit-member-accessibility': 'no-public',
     }
 };
