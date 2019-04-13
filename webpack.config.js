@@ -34,6 +34,20 @@ module.exports = {
           { loader: "less-loader" },
         ],
       },
+      {
+        test: /\.sass$/,
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: "typings-for-css-modules-loader",
+            options: {
+              modules: true,
+              namedExport: true
+            }
+          },
+          { loader: "sass-loader" },
+        ],
+      },
       { test: /\.css$/, loader: "style-loader!css-loader" },
       // Handle .ts and .tsx file via ts-loader.
       { test: /\.tsx?$/, loader: "ts-loader" },
