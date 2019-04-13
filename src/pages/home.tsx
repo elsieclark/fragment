@@ -1,5 +1,5 @@
 import { h, Component, render } from 'preact';
-import PageTemplate from '../templates/BasicTemplate/BasicTemplate.tsx';
+import PageTemplate from 'Templates/BasicTemplate';
 
 export interface Props {
     path: string;

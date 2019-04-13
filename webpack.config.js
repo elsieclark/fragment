@@ -16,12 +16,18 @@ module.exports = {
   mode: 'production',
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+    alias: {
+      Components: path.resolve(__dirname, 'src/components/'),
+      Templates: path.resolve(__dirname, 'src/templates/'),
+      Pages: path.resolve(__dirname, 'src/pages/'),
+    }
   },
   module: {
     rules: [
      {
         test: /\.less$/,
+        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {
@@ -36,6 +42,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {

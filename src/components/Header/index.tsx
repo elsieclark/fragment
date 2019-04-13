@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import style from './Header.scss';
+import style from './styles.scss';
 
 export interface Props {
   page: string,

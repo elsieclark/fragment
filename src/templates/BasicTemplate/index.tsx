@@ -1,8 +1,8 @@
 import { h } from 'preact';
-import style from './BasicTemplate.less';
+import style from './styles.less';
 import './global.css';
 
-import Header from '../../components/Header/Header.tsx';
+import Header from 'Components/Header';
 
 export interface Props {
   children?: JSX.Element[]
