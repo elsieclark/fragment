@@ -6,8 +6,8 @@
   "scripts": {
     "build": "node_modules/webpack/bin/webpack.js",
     "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less",
-    "lintf": "node_modules/eslint/bin/eslint.js src/**/*.tsx --fix ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less --fix",
+    "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less",
+    "lintf": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less --fix ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Will Clark",
