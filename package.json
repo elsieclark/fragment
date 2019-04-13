@@ -4,6 +4,7 @@
   "description": "Empty new Typescript/Preact project",
   "main": "src/index.js",
   "scripts": {
+    "clean": "scripts/clean.js",
     "build": "node_modules/webpack/bin/webpack.js --progress --color",
     "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less",
@@ -18,6 +19,7 @@
     "@typescript-eslint/parser": "^1.6.0",
     "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^1.0.1",
+    "del": "^4.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
