@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {TypedCssModulesPlugin} = require('typed-css-modules-webpack-plugin');
 
 module.exports = {
   entry: "./src/pages/home.tsx",
@@ -25,13 +26,16 @@ module.exports = {
   },
   module: {
     rules: [
-     {
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+      },
+      {
         test: /\.less$/,
-        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {
-            loader: "typings-for-css-modules-loader",
+            loader: "css-loader",
             options: {
               modules: true,
               namedExport: true
@@ -42,11 +46,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {
-            loader: "typings-for-css-modules-loader",
+            loader: "css-loader",
             options: {
               modules: true,
               namedExport: true
@@ -55,11 +58,20 @@ module.exports = {
           { loader: "sass-loader" },
         ],
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      // Handle .ts and .tsx file via ts-loader.
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              namedExport: true
+            }
+          },
+        ],
+      },
       { test: /\.html$/, loader: 'html-loader' },
-      
     ],
   },
   optimization: {
@@ -77,6 +89,9 @@ module.exports = {
     }),
     new CompressionPlugin({
       algorithm: 'gzip'
+    }),
+    new TypedCssModulesPlugin({
+      globPattern: '{src/**/*.scss,src/**/*.less,src/**/*.css}',
     }),
   ],
 };
