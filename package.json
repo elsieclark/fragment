@@ -4,6 +4,8 @@
   "description": "Empty new Typescript/Preact project",
   "main": "src/index.js",
   "scripts": {
+    "build": "node_modules/webpack/bin/webpack.js",
+    "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx",
     "lintf": "node_modules/eslint/bin/eslint.js src/**/*.tsx --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
