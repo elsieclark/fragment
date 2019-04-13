@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {TypedCssModulesPlugin} = require('typed-css-modules-webpack-plugin');
 
 module.exports = {
   entry: "./src/pages/home.tsx",
@@ -88,6 +89,9 @@ module.exports = {
     }),
     new CompressionPlugin({
       algorithm: 'gzip'
+    }),
+    new TypedCssModulesPlugin({
+      globPattern: '{src/**/*.scss,src/**/*.less,src/**/*.css}',
     }),
   ],
 };
