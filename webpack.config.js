@@ -25,13 +25,16 @@ module.exports = {
   },
   module: {
     rules: [
-     {
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+      },
+      {
         test: /\.less$/,
-        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {
-            loader: "typings-for-css-modules-loader",
+            loader: "css-loader",
             options: {
               modules: true,
               namedExport: true
@@ -42,11 +45,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        enforce: "pre",
         use: [
           { loader: "style-loader" },
           {
-            loader: "typings-for-css-modules-loader",
+            loader: "css-loader",
             options: {
               modules: true,
               namedExport: true
@@ -55,11 +57,20 @@ module.exports = {
           { loader: "sass-loader" },
         ],
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      // Handle .ts and .tsx file via ts-loader.
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              namedExport: true
+            }
+          },
+        ],
+      },
       { test: /\.html$/, loader: 'html-loader' },
-      
     ],
   },
   optimization: {
