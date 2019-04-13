@@ -4,4 +4,4 @@ node_modules
 *.lock
 *.less.d.ts
 
-package-lock.json
+stats.json
