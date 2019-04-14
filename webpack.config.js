@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
 
 module.exports = {
@@ -31,7 +32,12 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    { loader: 'style-loader' },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -45,7 +51,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    { loader: 'style-loader' },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -59,7 +70,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: 'style-loader' },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -92,5 +108,6 @@ module.exports = {
         new TypedCssModulesPlugin({
             globPattern: '{src/**/*.scss,src/**/*.less,src/**/*.css}',
         }),
+        new MiniCssExtractPlugin({}),
     ],
 };
