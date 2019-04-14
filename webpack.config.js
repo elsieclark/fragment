@@ -14,7 +14,6 @@ module.exports = {
         path: path.join(__dirname, '/public'),
         publicPath: '/',
     },
-    mode: 'production',
     resolve: {
         extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
         alias: {
