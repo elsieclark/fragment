@@ -7,8 +7,6 @@ module.exports = {
     },
     extends:  [
         'plugin:@typescript-eslint/recommended',
-        'prettier/@typescript-eslint',
-        'plugin:prettier/recommended',
     ],
     'globals': {
         'Atomics': 'readonly',
@@ -19,7 +17,6 @@ module.exports = {
         sourceType:  'module',
     },
     'plugins': [
-        'prettier',
         'react',
     ],
     'rules': {
@@ -33,7 +30,6 @@ module.exports = {
             'error',
             'unix'
         ],
-        'prettier/prettier': 'error',
         'quotes': [
             'error',
             'single'
