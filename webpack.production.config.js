@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -78,7 +80,14 @@ module.exports = {
         ],
     },
     optimization: {
-        minimize: true,
+        minimizer: [
+          new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: true // set to true if you want JS source maps
+          }),
+          new OptimizeCSSAssetsPlugin({})
+        ],
         splitChunks: {
             cacheGroups: {
                 vendor: {
@@ -89,6 +98,10 @@ module.exports = {
             },
         },
     },
+//    optimization: {
+//        minimize: true,
+//        
+//    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'custom_template',
