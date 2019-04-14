@@ -8,8 +8,8 @@
     "build": "node_modules/webpack/bin/webpack.js --config webpack.development.config.js --progress --color",
     "build-prod": "node_modules/webpack/bin/webpack.js --config webpack.production.config.js --progress --color",
     "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.development.config.js",
-    "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less",
-    "lintf": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less --fix ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less --fix",
+    "lint": "node_modules/prettier/bin-prettier.js -l src/**/*.{tsx,scss,less,css} ; node_modules/eslint/bin/eslint.js src/**/*.tsx ; node_modules/stylelint/bin/stylelint.js src/**/*.{scss,less,css}",
+    "lintf": "node_modules/prettier/bin-prettier.js --write src/**/*.{tsx,scss,less,css} > /dev/null; node_modules/eslint/bin/eslint.js src/**/*.tsx --fix ; node_modules/stylelint/bin/stylelint.js src/**/*.{scss,less,css} --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Will Clark",
@@ -23,7 +23,6 @@
     "del": "^4.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
