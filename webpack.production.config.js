@@ -5,6 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
     entry: {
@@ -108,6 +109,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash:6].css',
             chunkFilename: '[id].[contenthash:6].css',
+        }),
+        new Visualizer({
+            filename: '../stats.html',
         }),
     ],
 };

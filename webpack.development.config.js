@@ -2,6 +2,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
     entry: {
@@ -92,6 +93,9 @@ module.exports = {
         }),
         new TypedCssModulesPlugin({
             globPattern: '{src/**/*.scss,src/**/*.less,src/**/*.css}',
+        }),
+        new Visualizer({
+            filename: '../stats.html',
         }),
     ],
 };
