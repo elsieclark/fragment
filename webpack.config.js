@@ -7,7 +7,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
 
 module.exports = {
-    entry: './src/pages/home.tsx',
+    entry: {
+        app: './src/pages/home.tsx',
+        vendor: ['./scripts/vendor.js'],
+    },
     output: {
         filename: './[name].[contenthash:6].bundle.js',
         chunkFilename: '[name].[contenthash:6].bundle.js',
@@ -89,6 +92,15 @@ module.exports = {
     },
     optimization: {
         minimize: true,
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]preact[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                }
+            }
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
