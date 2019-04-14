@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -43,9 +43,11 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            importLoaders: 1,
                             namedExport: true,
                         },
                     },
+                    { loader: 'postcss-loader' },
                     { loader: 'less-loader' },
                 ],
             },
@@ -57,9 +59,11 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            importLoaders: 1,
                             namedExport: true,
                         },
                     },
+                    { loader: 'postcss-loader' },
                     { loader: 'sass-loader' },
                 ],
             },
@@ -71,9 +75,11 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            importLoaders: 1,
                             namedExport: true,
                         },
                     },
+                    { loader: 'postcss-loader' },
                 ],
             },
             { test: /\.html$/, loader: 'html-loader' },
@@ -81,12 +87,12 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-          new UglifyJsPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: true // set to true if you want JS source maps
-          }),
-          new OptimizeCSSAssetsPlugin({})
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
+            new OptimizeCSSAssetsPlugin({}),
         ],
         splitChunks: {
             cacheGroups: {
@@ -98,10 +104,6 @@ module.exports = {
             },
         },
     },
-//    optimization: {
-//        minimize: true,
-//        
-//    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'custom_template',
