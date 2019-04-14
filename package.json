@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "scripts/clean.js",
-    "build": "node_modules/webpack/bin/webpack.js --mode development --progress --color",
-    "build-prod": "node_modules/webpack/bin/webpack.js --mode production --progress --color",
-    "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "node_modules/webpack/bin/webpack.js --config webpack.development.config.js --progress --color",
+    "build-prod": "node_modules/webpack/bin/webpack.js --config webpack.production.config.js --progress --color",
+    "dev": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.development.config.js",
     "lint": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less",
     "lintf": "node_modules/eslint/bin/eslint.js src/**/*.tsx src/**/*.scss src/**/*.less --fix ; node_modules/stylelint/bin/stylelint.js src/**/*.scss src/**/*.less --fix",
     "test": "echo \"Error: no test specified\" && exit 1"

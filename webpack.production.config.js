@@ -12,7 +12,7 @@ module.exports = {
         vendor: ['./scripts/vendor.js'],
     },
     output: {
-        filename: './[name].[contenthash:6].bundle.js',
+        filename: '[name].[contenthash:6].bundle.js',
         chunkFilename: '[name].[contenthash:6].bundle.js',
         path: path.join(__dirname, '/public'),
         publicPath: '/',
@@ -25,6 +25,7 @@ module.exports = {
             Pages: path.resolve(__dirname, 'src/pages/'),
         },
     },
+    mode: 'production',
     module: {
         rules: [
             {
@@ -34,12 +35,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development',
-                        },
-                    },
+                    { loader: MiniCssExtractPlugin.loader },
                     {
                         loader: 'css-loader',
                         options: {
@@ -53,12 +49,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development',
-                        },
-                    },
+                    { loader: MiniCssExtractPlugin.loader },
                     {
                         loader: 'css-loader',
                         options: {
@@ -72,12 +63,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development',
-                        },
-                    },
+                    { loader: MiniCssExtractPlugin.loader },
                     {
                         loader: 'css-loader',
                         options: {
@@ -98,8 +84,8 @@ module.exports = {
                     test: /[\\/]node_modules[\\/]preact[\\/]/,
                     name: 'vendor',
                     chunks: 'all',
-                }
-            }
+                },
+            },
         },
     },
     plugins: [
@@ -119,6 +105,9 @@ module.exports = {
         new TypedCssModulesPlugin({
             globPattern: '{src/**/*.scss,src/**/*.less,src/**/*.css}',
         }),
-        new MiniCssExtractPlugin({}),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash:6].css',
+            chunkFilename: '[id].[contenthash:6].css',
+        }),
     ],
 };
